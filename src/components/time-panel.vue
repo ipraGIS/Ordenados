@@ -1,7 +1,7 @@
 <template>
-  <div id="time-panel">
+  <div id="time-panel" >
     <span>{{ cuentaAtras }}</span>
-    <h1>{{time}}</h1>
+    <h1 v-bind:class="{ parpadea: isParpadea, 'text-danger': hasError  }">{{time}}</h1>
 <!--     <div v-if="time === 0">
       <h2>tiempo agotado!</h2>
     </div> -->
@@ -21,5 +21,12 @@
   width:45%;  
   margin:0;
   padding: 0;
+}
+
+.parpadea{
+  background-color: yellow;
+}
+.text-danger{
+  background-color: red;
 }
 </style>
