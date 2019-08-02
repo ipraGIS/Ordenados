@@ -1,9 +1,8 @@
 {
-	"1": "Cars",
-	"2": "Peter Pan",
-	"3": "Ratatouille",
-	"4": "Los Increibles",
-	"5": "Rompe Ralf",
-	"6": "El Rey León",
-	"7": "Kunfú Panda"
+  "categoria": {
+      "peliculas": ["Cars","Peter Pan","Ratatouille","Los Increibles","Rompe Ralf","El Rey León","Kunfú Panda"],
+      "animales": ["Oso Panda","Caracol", "Elefane", "Cocodrilo"],
+      "paises": ["Francia", "Colombia", "Australia"]
+    },
+  "segundos": 5
 }

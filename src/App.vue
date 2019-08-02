@@ -1,48 +1,54 @@
 <template>
   <div id="app">
-    <h1>{{ msg }}</h1>
-  <div>
-    <info-panel></info-panel>
-    <time-panel></time-panel>
-    <letras-panel></letras-panel>
+    <div class="titulos">
+    <h1>{{ title }}</h1>
+    <h3>{{ subtitle }}</h3>
     </div>
+      <button> new game </button>
+    <div>
+      <info-panel></info-panel>
+      <time-panel></time-panel>
+    </div>
+    <letras-panel></letras-panel>
   </div>
 </template>
 
 <script>
-
-
-import infoPanel from './components/info-panel.vue';
-import timePanel from './components/time-panel.vue';
-import letrasPanel from './components/letras-panel.vue';
+import infoPanel from "./components/info-panel.vue";
+import timePanel from "./components/time-panel.vue";
+import letrasPanel from "./components/letras-panel.vue";
 
 export default {
-   components: {
-        'info-panel': infoPanel,
-        'time-panel': timePanel,
-        'letras-panel': letrasPanel
-    },
+  components: {
+    "info-panel": infoPanel,
+    "time-panel": timePanel,
+    "letras-panel": letrasPanel
+  },
 
-  name: 'app',
-  data () {
+  name: "app",
+  data() {
     return {
-      msg: 'Ordenando'
-    }
+      title: "Ordenando",
+      subtitle: "Tiene 10 segundos para ordenar las letras"
+    };
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  font-size: 22px;
 }
-
-h1, h2 {
+.titulos{
+  text-align: center;
+}
+h1,
+h2 {
   font-weight: normal;
 }
 
