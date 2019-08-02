@@ -14,6 +14,7 @@ export default {
       function jsonHandler(evt) {
         addCategorias.apply(that, [evt]);
       }
+      this.$root.$on('reset-game', this.reset.bind(this));
   }, 
   watch:{
     checked: {
@@ -29,6 +30,9 @@ export default {
 
   },
   methods: {
+    reset(){
+      console.log('reset desde InfoPanel');
+    }
   }
 }
 

@@ -1,19 +1,10 @@
 <template>
-  <div
-    id="time-panel"
-    v-bind:class="{ normal:(!isParpadea && !hasError), parpadea: isParpadea, 'finish-time': hasError   }"
-  >
-    <button class="boton tooltip" v-show="!cuenta" v-on:click="start">
-      INICIO
+  <div id="time-panel" v-bind:class="{ normal:(!isParpadea && !hasError), parpadea: isParpadea, 'finish-time': hasError   }">
+    <button class="boton tooltip" v-show="!cuenta" v-on:click="start">INICIO
       <span class="tooltiptext">Inicia Juego</span>
     </button>
-
     <div v-show="cuenta">
-      <!-- <span>{{ cuentaAtras }}</span> -->
       <div>{{time}}</div>
-      <!--     <div v-if="time === 0">
-      <h2>tiempo agotado!</h2>
-      </div>-->
     </div>
   </div>
 </template>
@@ -24,24 +15,25 @@
 <style>
 .boton {
   background-color: #4caf50; /* Green */
-  border: none;
+  border: 1px solid  #4caf50 ;
   color: white;
+  padding: 0;
+  margin: 30px -10px;
   /* padding: 30px 15px; */
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
 }
 #time-panel {
+  display: inline-flex;
+  position: relative;
   font-size: 16px;
   font-weight: bold;
-  display: inline-flex;
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 20px;
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   color: #fff;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;

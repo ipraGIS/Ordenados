@@ -2,7 +2,8 @@
   "categoria": {
       "peliculas": ["Cars","Peter Pan","Ratatouille","Los Increibles","Rompe Ralf","El Rey León","Kunfú Panda"],
       "animales": ["Oso Panda","Caracol", "Elefane", "Cocodrilo"],
-      "paises": ["Francia", "Colombia", "Australia"]
+      "paises": ["Francia", "Colombia", "Australia"],
+      "comida": ["Tortilla", "Croquetas", "Paella", "Macarrones con tomate", "Calamares a la romana", "Guisantes con Jamón", "Lasaña", "Salmorejo"]
     },
-  "segundos": 5
+  "segundos": 3
 }

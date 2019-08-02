@@ -4,6 +4,7 @@ export default {
       return {
         title: 'panel para mostrar el tiempo',
         time: 10,
+        timeInicial: 10,
         message: 'You loaded this page on ' + new Date().toLocaleString(),
         isParpadea:false,
         hasError: false,
@@ -16,7 +17,9 @@ export default {
       function jsonHandler(evt) {
         if( evt.detail &&  evt.detail.segundos)
           that.time = evt.detail.segundos ;
+          that.timeInicial = evt.detail.segundos ;
       }
+      this.$root.$on('reset-game', this.reset.bind(this));
   },
     methods: {
       start() {
@@ -41,15 +44,20 @@ export default {
         setTimeout(function(time2){
           clearInterval(crono);
           that.title = "Se acabó tu tiempooooo";
-          //alert("Se acabó tu tiempooooo");
         }, time2);
 
       },
       finishTime(){
         this.hasError = true;
         this.$root.$emit('finish-time', {});
+        document.getElementById('botonReset').style.display = 'inline-flex' ;
       },
-
+      reset(){
+        this.hasError = false;
+        console.log('reset desde TimePanel');
+        this.time = this.timeInicial;
+        this.cuenta = false;
+      }
     }
   }
 
@@ -57,5 +65,6 @@ function setTime(e){
   if( !e.detail || !e.detail.segundos){
     return;
   }
-      this.time = e.detail.segundos;
+  this.timeInicial = e.detail.segundos;
+  this.time = e.detail.segundos;
 }

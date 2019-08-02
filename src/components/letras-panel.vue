@@ -1,5 +1,5 @@
 <template>
-  <div class="test">
+  <div class="letrasPanel">
     <div v-if="visible" id="letrasDesord">
       <br />
       <h1>
@@ -25,6 +25,15 @@
 </script>
 
 <style>
+
+.letrasPanel {
+  margin: 0;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+} 
 #letrasDesord {
   /* background-color: khaki; */
   font-size: 10px;
@@ -61,14 +70,7 @@
   transform: translate(-50%, -50%);
 }
 
-.test {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-}
+
 
 #letra {
   background-color: #000;

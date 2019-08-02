@@ -4,8 +4,9 @@
     <!-- <div v-for="(item, index) in categorias" v-bind:key="item.id">
       <input type="checkbox"  :ref="'checkbox' + index" :id="`checkbox-${index}`" :value="item" v-model.lazy="checked" checked><label>{{item}}</label>
     </div>-->
-    <span class='list' v-for="(item) in categorias" :key="item.id">
-      <input type="checkbox" v-model="checked" :value="item" />{{item}}
+    <span class="list" v-for="(item) in categorias" :key="item.id">
+      <input type="checkbox" v-model="checked" :value="item" />
+      {{item}}
     </span>
   </div>
 </template>
@@ -14,13 +15,12 @@
 </script>
 
 <style>
-
-.list{
-  display:flex;
-  align-items:center;
+.list {
+  display: flex;
+  align-items: center;
 }
-input{
-  margin:10px;
+input {
+  margin: 10px;
 }
 
 .info-panel {
@@ -29,9 +29,13 @@ input{
   width: 45%;
   margin: 0;
   padding: 0;
+  left:10%;
+  position: absolute;
 }
 
 #parrafoInfo {
+  margin-top: 20px;
   font-size: 18px;
+  text-align: initial;
 }
 </style>

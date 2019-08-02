@@ -17,34 +17,26 @@ export default {
     function letrasHandler(evt) {
       that.visible = true;
     }
-
-    fetch(this.urlLetras)
-      .then(res => res.json())
-      .then(myjson => {
-        const mix = []
-        for(const i in myjson.categoria){
-          for( const j of myjson.categoria[i]){
-            mix.push(j);
-          }
-        }
-        myjson.categoria.todas = mix; // añado una nueva categoría mezcla de todas
-        this.data = myjson;
-        const primeraCategoria = Object.keys(this.data.categoria)[0];
-        // this.letras = desordena(this.data.categoria[primeraCategoria]).toString(); // por defecto está precargada una cadena perteneciente a la primera categoria (ckeckeada)
-        this.letras = this.desordena(this.data.categoria[primeraCategoria]).toString(); // por defecto está precargada una cadena perteneciente a la primera categoria (ckeckeada)
-        let evt = document.createEvent("CustomEvent");
-        evt.initCustomEvent('json-loaded', false, false, this.data);
-        window.dispatchEvent(evt);
-      })
   },
-  mounted() {
+    // removeEventListener('mostrar-letras', letrasHandler, false);
+
+  mounted(){
     this.$root.$on('categoria-modificada', this.updateLetras.bind(this));
     this.$root.$on('finish-time', this.soluciona.bind(this));
+    this.$root.$on('reset-game', this.reset.bind(this));
+    const that = this;
+    addEventListener('json-loaded', jsonHandler, false);
+    function jsonHandler(evt) {
+      that.data = evt.detail;
+      const primeraCategoria = Object.keys(evt.detail.categoria)[0];
+        // this.letras = desordena(this.data.categoria[primeraCategoria]).toString(); // por defecto está precargada una cadena perteneciente a la primera categoria (ckeckeada)
+        that.letras = that.desordena(evt.detail.categoria[primeraCategoria]).toString(); 
+    }
 },
 
 methods: {
   updateLetras(categoria){
-    const categoriaSelect = categoria[0];
+    const categoriaSelect = categoria? categoria[0] : this.categoriaSel ? this.categoriaSel : 'todas';
     if (categoriaSelect){
       this.categoriaSel = categoriaSelect.toLowerCase();
       const listado = this.data.categoria[this.categoriaSel]
@@ -54,6 +46,12 @@ methods: {
   soluciona(){
     this.solucion = true
   },
+  reset(){
+    this.updateLetras();
+    this.solucion = false;
+    this.visible = false;
+  },
+
     desordena(json) {
       let opciones = [];
       for (let i in json) {
