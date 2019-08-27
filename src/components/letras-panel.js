@@ -64,8 +64,8 @@ methods: {
       this.letrasOrdenadas = c.toUpperCase();
       console.log(this.desordenaPalabras(cadena));
       return this.desordenaPalabras(cadena);
-    
     },
+
     desordenaPalabras(frase) {
       if(!frase)
         return;
@@ -73,7 +73,6 @@ methods: {
       return palabras.map(function (palabra) {
         let desordenada = [];
         let salido = []
-    
         while (desordenada.length < palabra.length) {
           let num = Math.floor(Math.random() * (palabra.length - 0) + 0); 
           if (salido.indexOf(num) == -1) {
@@ -81,7 +80,7 @@ methods: {
             desordenada.push(palabra[num].toUpperCase());
           }
         }
-        return desordenada.join("")
+        return desordenada.join !== frase ?  desordenada.join("") : desordenaPalabras(frase); // me aseguro qué devuelva una palabra desordenada
       });
     }
 }

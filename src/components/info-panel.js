@@ -14,13 +14,12 @@ export default {
       function jsonHandler(evt) {
         addCategorias.apply(that, [evt]);
       }
-      this.$root.$on('reset-game', this.reset.bind(this));
+      this.$root.$on('reset-game', this.$_infopanel_reset.bind(this));
   }, 
   watch:{
-    checked: {
+    checklist: {
       handler: function() {
         this.$root.$emit('categoria-modificada', this.checked);
-        console.log(this.checked);
         if(this.checked.length > 1){
           this.checked.shift();
         }
@@ -30,7 +29,7 @@ export default {
 
   },
   methods: {
-    reset(){
+    $_infopanel_reset(){
       console.log('reset desde InfoPanel');
     }
   }

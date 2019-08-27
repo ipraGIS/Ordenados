@@ -3,7 +3,7 @@
     <div class="titulos">
       <h1>{{title}}</h1>
       <time-panel></time-panel>
-      <button id="botonReset" v-on:click="reset">NUEVA PARTIDA</button>
+      <button id="botonReset" v-on:click="$_reset">NUEVA PARTIDA</button>
       <h3>{{subtitle}}</h3>
       <info-panel></info-panel>
     </div>
@@ -50,15 +50,19 @@ export default {
   mounted() {
     const that = this;
     addEventListener("json-loaded", jsonHandler, false);
+    let subtitleInicio;
     function jsonHandler(evt) {
       if (!evt.detail || !evt.detail.segundos) return;
-      that.subtitle = `Tiene ${evt.detail.segundos} segundos para ordenar las letras`;
+      that.subtitle = `Tiene ${evt.detail.segundos} segundos para adivinar de qué se trata...`;
+      subtitleInicio = that.subtitle;
     }
+    that.$root.$on('finish-time', function(){that.subtitle = "¿ Quieres jugar de Nuevo ?"});
+    that.$root.$on('reset-game', function(){that.subtitle = subtitleInicio});
   },
   methods: {
-    reset(e) {
-      this.$root.$emit("reset-game");
+    $_reset(e) {
       if (e && e.target) e.target.style.display = "none";
+      this.$root.$emit("reset-game");
     }
   }
 };
@@ -76,8 +80,7 @@ export default {
 #botonReset {
   position: relative;
   display: none;
-  /* right: 15%; */
-  background-color: orange; /* Green */
+  background-color: orange; 
   border: none;
   color: white;
   text-align: center;

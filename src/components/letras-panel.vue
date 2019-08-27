@@ -21,10 +21,9 @@
   </div>
 </template>
 
-<script src="./letras-panel.js">
-</script>
+<script src="./letras-panel.js"></script>
 
-<style>
+<style scoped>
 
 .letrasPanel {
   margin: 0;

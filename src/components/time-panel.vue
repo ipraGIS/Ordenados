@@ -1,7 +1,7 @@
 <template>
-  <div id="time-panel" v-bind:class="{ normal:(!isParpadea && !hasError), parpadea: isParpadea, 'finish-time': hasError   }">
-    <button class="boton tooltip" v-show="!cuenta" v-on:click="start">INICIO
-      <span class="tooltiptext">Inicia Juego</span>
+  <div class="block" v-bind:class= "{ 'block--normal':(!isParpadea && !hasError), 'block--parpadea': isParpadea, 'block--finish': hasError   }">
+    <button class="boton boton--tooltip" v-show="!cuenta" v-on:click="$_time_start">INICIO
+      <span class="boton--tooltiptext">Inicia Juego</span>
     </button>
     <div v-show="cuenta">
       <div>{{time}}</div>
@@ -9,22 +9,10 @@
   </div>
 </template>
 
-<script src="./time-panel.js">
-</script>
+<script src="./time-panel.js"></script>
 
-<style>
-.boton {
-  background-color: #4caf50; /* Green */
-  border: 1px solid  #4caf50 ;
-  color: white;
-  padding: 0;
-  margin: 30px -10px;
-  /* padding: 30px 15px; */
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-}
-#time-panel {
+<style scoped>
+.block {
   display: inline-flex;
   position: relative;
   font-size: 16px;
@@ -39,23 +27,40 @@
   -moz-border-radius: 50px;
   border-radius: 50px;
 }
-.normal {
+
+.block--normal {
   background-color: #4caf50; /* Green */
 }
-.parpadea {
+.block--parpadea {
   background-color: rgb(51, 255, 0);
 }
-.finish-time {
-  background-color: red;
+.block--finish {
+  /*background-color: red;*/
+  display:none;
 }
 
-.tooltip {
+.boton {
+  background-color: #4caf50; /* Green */
+  border: 1px solid  #4caf50 ;
+  color: white;
+  padding: 0;
+  margin: 30px -10px;
+  /* padding: 30px 15px; */
+  text-align: center;
+  text-decoration: none;
+}
+
+.boton:hover {
+  cursor: pointer;
+}
+
+.boton--tooltip {
   position: relative;
   display: inline-block;
 }
 
 /* Tooltip text */
-.tooltip .tooltiptext {
+.boton--tooltip .boton--tooltiptext {
   font-size: 12px;
   visibility: hidden;
   width: 120px;
@@ -72,10 +77,7 @@
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
+.boton--tooltip:hover .boton--tooltiptext {
   visibility: visible;
-}
-.boton:hover {
-  cursor: pointer;
 }
 </style>

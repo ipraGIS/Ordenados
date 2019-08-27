@@ -1,29 +1,21 @@
 <template>
-  <div class="info-panel">
-    <p id="parrafoInfo">{{ info }}</p>
+  <div class="block">
+    <p class="block--parrafo">{{ info }}</p>
     <!-- <div v-for="(item, index) in categorias" v-bind:key="item.id">
       <input type="checkbox"  :ref="'checkbox' + index" :id="`checkbox-${index}`" :value="item" v-model.lazy="checked" checked><label>{{item}}</label>
     </div>-->
-    <span class="list" v-for="(item) in categorias" :key="item.id">
-      <input type="checkbox" v-model="checked" :value="item" />
+    <span class="block--list" v-for="(item) in categorias" :key="item.id">
+      <input class="block--list--input" type="checkbox" v-model="checked" :value="item" />
       {{item}}
     </span>
   </div>
 </template>
 
-<script src="./info-panel.js">
-</script>
+<script src="./info-panel.js"></script>
 
-<style>
-.list {
-  display: flex;
-  align-items: center;
-}
-input {
-  margin: 10px;
-}
-
-.info-panel {
+<style scoped>
+/* BEM: block Element Modifier */
+.block {
   font-size: 12px;
   display: inline-block;
   width: 45%;
@@ -33,9 +25,18 @@ input {
   position: absolute;
 }
 
-#parrafoInfo {
+.block--parrafo {
   margin-top: 20px;
   font-size: 18px;
   text-align: initial;
 }
+
+.block--list {
+  display: flex;
+  align-items: center;
+}
+.block--list--input {
+  margin: 10px;
+}
+
 </style>
