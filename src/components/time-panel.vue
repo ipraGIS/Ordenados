@@ -3,6 +3,9 @@
     <button class="boton boton--tooltip" v-show="!cuenta" v-on:click="$_time_start">INICIO
       <span class="boton--tooltiptext">Inicia Juego</span>
     </button>
+    <!-- <button class="boton boton--tooltip" v-show="time === 0" v-on:click="$_time_reset">NUEVA PARTIDA
+      <span class="boton--tooltiptext">Inicia Juego</span>
+    </button> -->
     <div v-show="cuenta">
       <div>{{time}}</div>
     </div>
@@ -48,6 +51,7 @@
   /* padding: 30px 15px; */
   text-align: center;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .boton:hover {

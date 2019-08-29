@@ -35,13 +35,15 @@ export default {
     fetch("../src/assets/textos.json")
       .then(res => res.json())
       .then(myjson => {
-        const mix = [];
-        for (const i in myjson.categoria) {
-          for (const j of myjson.categoria[i]) {
-            mix.push(j);
+        if (myjson.todas) { // si tiene configurado, todas == true => añado una nueva categoría mezcla de todas
+          const mix = [];
+          for (const i in myjson.categoria) {
+            for (const j of myjson.categoria[i]) {
+              mix.push(j);
+            }
           }
+          myjson.categoria.todas = mix; 
         }
-        myjson.categoria.todas = mix; // añado una nueva categoría mezcla de todas
         let evt = document.createEvent("CustomEvent");
         evt.initCustomEvent("json-loaded", false, false, myjson);
         window.dispatchEvent(evt);
@@ -56,8 +58,12 @@ export default {
       that.subtitle = `Tiene ${evt.detail.segundos} segundos para adivinar de qué se trata...`;
       subtitleInicio = that.subtitle;
     }
-    that.$root.$on('finish-time', function(){that.subtitle = "¿ Quieres jugar de Nuevo ?"});
-    that.$root.$on('reset-game', function(){that.subtitle = subtitleInicio});
+    that.$root.$on("finish-time", function() {
+      that.subtitle = "¿ Quieres jugar de Nuevo ?";
+    });
+    that.$root.$on("reset-game", function() {
+      that.subtitle = subtitleInicio;
+    });
   },
   methods: {
     $_reset(e) {
@@ -67,7 +73,6 @@ export default {
   }
 };
 </script>
-
 <style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -80,7 +85,7 @@ export default {
 #botonReset {
   position: relative;
   display: none;
-  background-color: orange; 
+  background-color: orange;
   border: none;
   color: white;
   text-align: center;

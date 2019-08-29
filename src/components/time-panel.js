@@ -61,10 +61,10 @@ export default {
     }
   }
 
-function setTime(e){
-  if( !e.detail || !e.detail.segundos){
-    return;
-  }
-  this.timeInicial = e.detail.segundos;
-  this.time = e.detail.segundos;
-}
+// function setTime(e){
+//   if( !e.detail || !e.detail.segundos){
+//     return;
+//   }
+//   this.timeInicial = e.detail.segundos;
+//   this.time = e.detail.segundos;
+// }

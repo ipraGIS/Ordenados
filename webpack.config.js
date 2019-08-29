@@ -1,13 +1,20 @@
 var path = require('path')
-var webpack = require('webpack')
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: '',
     filename: 'build.js'
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Ordenados',
+      template: 'index.html'
+    })
+  ],
   module: {
     rules: [{
         test: /\.css$/,
@@ -46,12 +53,15 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+  }
   },
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
 }
 
 if (process.env.NODE_ENV === 'production') {

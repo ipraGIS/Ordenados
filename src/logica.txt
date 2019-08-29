@@ -1,0 +1,4 @@
+- Al inicar la partida la categoría por defecto es TODAS.
+- Cada vez que juego una palabra, se borra del listado de palabras posibles de esa categoría para que no se repita.
+- Si he consumido todas las palabras de una categoría aparece un alert....
+

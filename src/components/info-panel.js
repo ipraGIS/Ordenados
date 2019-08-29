@@ -10,14 +10,14 @@ export default {
     mounted(){
       // addEventListener('json-loaded', test.bind(this), false); // Asi el navegador hace una copia en memoria y en caso de querer eliminarlo con removeEventListener no 'funciona'
       const that = this;
-      addEventListener('json-loaded', jsonHandler, false);
-      function jsonHandler(evt) {
+      addEventListener('json-loaded', jsonHandlerInfo, false);
+      function jsonHandlerInfo(evt) {
         addCategorias.apply(that, [evt]);
       }
       this.$root.$on('reset-game', this.$_infopanel_reset.bind(this));
   }, 
   watch:{
-    checklist: {
+    checked: {
       handler: function() {
         this.$root.$emit('categoria-modificada', this.checked);
         if(this.checked.length > 1){
@@ -36,6 +36,7 @@ export default {
 }
 
 function addCategorias(e){
+  console.log('addCategorias');
     if( !e.detail || !e.detail.categoria){
       return;
     }
