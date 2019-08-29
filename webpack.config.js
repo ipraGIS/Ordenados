@@ -1,6 +1,7 @@
 var path = require('path')
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+// var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -10,6 +11,10 @@ module.exports = {
     filename: 'build.js'
   },
   plugins: [
+    // new CleanWebpackPlugin(['dist']),
+    // new CopyWebpackPlugin([
+    // { from: './src/assets', to: './src/assets' },
+    // ]),
     new HtmlWebpackPlugin({
       title: 'Ordenados',
       template: 'index.html'
@@ -55,8 +60,8 @@ module.exports = {
     noInfo: true,
     overlay: true,
     headers: {
-      'Access-Control-Allow-Origin': '*'
-  }
+          'Access-Control-Allow-Origin': '*'
+      }
   },
   performance: {
     hints: false
