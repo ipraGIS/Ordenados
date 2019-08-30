@@ -5,6 +5,6 @@
     "paises": ["Francia", "Colombia", "Australia"],
     "peliculas": ["Cars", "Peter Pan", "Ratatouille", "Los Increibles", "Rompe Ralf", "El Rey León", "Kunfú Panda"]
   },
-  "segundos": "1",
+  "segundos": "5",
   "todas": false
 }

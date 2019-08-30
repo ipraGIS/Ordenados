@@ -1,4 +1,6 @@
-- Al inicar la partida la categoría por defecto es TODAS.
+- Al inicar la partida la categoría por defecto es la primera de la lista.
 - Cada vez que juego una palabra, se borra del listado de palabras posibles de esa categoría para que no se repita.
 - Si he consumido todas las palabras de una categoría aparece un alert....
+- En el archivo de configuración si todas: true, añade una categoría "todas" con el conjunto de palabras de todas las categorias.
+- Botón para resolver: muestra las palabras resueltas, y se comporta como si se cumpliese el tiempo de juego.
 

@@ -13,19 +13,21 @@ export default {
     },
     mounted(){
       const that = this;
-      addEventListener('json-loaded', jsonHandler, false);
-      function jsonHandler(evt) {
+      addEventListener('json-loaded', jsonHandlerTime, false);
+      function jsonHandlerTime(evt) {
         if( evt.detail &&  evt.detail.segundos)
           that.time = evt.detail.segundos ;
           that.timeInicial = evt.detail.segundos ;
       }
       this.$root.$on('reset-game', this.$_time_reset.bind(this));
+      this.$root.$on('solve-word', this.$_time_finish.bind(this));
   },
     methods: {
       $_time_start() {
         this.cuenta = true;
         let evt = document.createEvent("CustomEvent");
         evt.initCustomEvent('mostrar-letras', false, false, {});
+        document.getElementById('botonSolve').style.display = 'inline-flex';   
         window.dispatchEvent(evt);
         this.$_time_cuentaAtras();
       },
@@ -50,14 +52,15 @@ export default {
       $_time_finish(){
         this.hasError = true;
         this.$root.$emit('finish-time', {});
-        document.getElementById('botonReset').style.display = 'inline-flex' ;   
          },
+         
       $_time_reset(){
         this.hasError = false;
         console.log('reset desde TimePanel');
         this.time = this.timeInicial;
         this.cuenta = false;
-      }
+      },
+
     }
   }
 

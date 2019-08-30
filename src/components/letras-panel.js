@@ -18,10 +18,11 @@ export default {
   mounted(){
     this.$root.$on('categoria-modificada', this.updateLetras.bind(this));
     this.$root.$on('finish-time', this.soluciona.bind(this));
+    this.$root.$on('solve-word', this.soluciona.bind(this));
     this.$root.$on('reset-game', this.reset.bind(this));
     const that = this;
-    addEventListener('json-loaded', jsonHandler, false);
-    function jsonHandler(evt) {
+    addEventListener('json-loaded', jsonHandlerLetras, false);
+    function jsonHandlerLetras(evt) {
       that.data = evt.detail;
       that.categoriaSel = Object.keys(evt.detail.categoria)[0];
     }
@@ -41,7 +42,7 @@ methods: {
     }
   },
   soluciona(){
-    this.solucion = true
+    this.solucion = true;
   },
   reset(){
     this.updateLetras();
@@ -50,11 +51,12 @@ methods: {
   },
 
   desordena(dataSelec) {
+    console.log(11111111111, dataSelec.length);
       let opciones = [];
       for (let i in dataSelec) {
         opciones.push(dataSelec[i]);
       }
-      let random = Math.floor(Math.random() * opciones.length - 1) + 1
+      let random = Math.floor(Math.random() * opciones.length - 1) + 1;
       let cadena = opciones[random];
       if(!cadena){
         alert(`Ya has jugado con todas las palabras de la categoría ${this.categoriaSel}. Selecciona otra categoria`)

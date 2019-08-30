@@ -1,6 +1,6 @@
 <template>
   <div class="letrasPanel">
-    <div v-if="visible" id="letrasDesord">
+    <div v-if="visible" class="letrasDesord">
       <br />
       <h1>
         <span v-for="letra in letras" :key="letra.id">
@@ -31,12 +31,12 @@
   bottom: 10%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, -50%);
-} 
-#letrasDesord {
-  /* background-color: khaki; */
   font-size: 10px;
   height: auto;
+  transform: translate(-50%, -50%);
+} 
+.letrasDesord {
+  /* background-color: khaki; */
   padding: 10px;
   margin-top: 20px;
   margin-right: 25%;
@@ -44,14 +44,13 @@
 
 #letrasOrd {
   /* background-color: khaki; */
-  font-size: 10px;
   height: auto;
   padding: 10px;
   margin-top: 20px;
   margin-right: 25%;
 }
 
-#letrasDesord h1 {
+.letrasDesord h1 {
   margin: 0;
   position: absolute;
   top: 50%;
@@ -69,20 +68,18 @@
   transform: translate(-50%, -50%);
 }
 
-
-
 #letra {
   background-color: #000;
   padding: 10px;
-  border: 0px solid grey;
+  border: 0px solid #808080;
   margin: 10px;
   color: #fff;
 }
 
 #letraSolucion {
-  background-color: indianred;
+  background-color: #cd5c5c;
   padding: 10px;
-  border: 0px solid grey;
+  border: 0px solid #808080;
   margin: 10px;
   color: #fff;
 }

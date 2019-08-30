@@ -1,11 +1,8 @@
 <template>
   <div class="block" v-bind:class= "{ 'block--normal':(!isParpadea && !hasError), 'block--parpadea': isParpadea, 'block--finish': hasError   }">
     <button class="boton boton--tooltip" v-show="!cuenta" v-on:click="$_time_start">INICIO
-      <span class="boton--tooltiptext">Inicia Juego</span>
+      <!-- <span class="boton--tooltiptext">Inicia Juego</span> -->
     </button>
-    <!-- <button class="boton boton--tooltip" v-show="time === 0" v-on:click="$_time_reset">NUEVA PARTIDA
-      <span class="boton--tooltiptext">Inicia Juego</span>
-    </button> -->
     <div v-show="cuenta">
       <div>{{time}}</div>
     </div>
@@ -23,8 +20,8 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   color: #fff;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
@@ -68,7 +65,7 @@
   font-size: 12px;
   visibility: hidden;
   width: 120px;
-  background-color: grey;
+  background-color: #808080;
   color: #fff;
   text-align: center;
   padding: 8px 0px;

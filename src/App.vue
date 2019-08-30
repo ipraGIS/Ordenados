@@ -2,12 +2,14 @@
   <div id="app">
     <div class="titulos">
       <h1>{{title}}</h1>
-      <time-panel></time-panel>
-      <button id="botonReset" v-on:click="$_reset">NUEVA PARTIDA</button>
       <h3>{{subtitle}}</h3>
+      <time-panel></time-panel>
+      <button class="boton reset" id="botonReset" v-on:click="$_reset">NUEVA PARTIDA</button>
       <info-panel></info-panel>
+      <button class="boton solve" id="botonSolve" v-on:click="$_solve">RESOLVER</button>
     </div>
     <letras-panel></letras-panel>
+    <div></div>
   </div>
 </template>
 
@@ -27,7 +29,7 @@ export default {
   data() {
     return {
       title: "Ordenando",
-      subtitle: "Tiene 10 segundos para ordenar las letras",
+      subtitle: "Tiene X segundos para adivinar de qué se trata...",
       jsonData: {}
     };
   },
@@ -35,14 +37,15 @@ export default {
     fetch("../src/assets/textos.json")
       .then(res => res.json())
       .then(myjson => {
-        if (myjson.todas) { // si tiene configurado, todas == true => añado una nueva categoría mezcla de todas
+        if (myjson.todas) {
+          // si tiene configurado, todas == true => añado una nueva categoría mezcla de todas
           const mix = [];
           for (const i in myjson.categoria) {
             for (const j of myjson.categoria[i]) {
               mix.push(j);
             }
           }
-          myjson.categoria.todas = mix; 
+          myjson.categoria.todas = mix;
         }
         let evt = document.createEvent("CustomEvent");
         evt.initCustomEvent("json-loaded", false, false, myjson);
@@ -60,6 +63,8 @@ export default {
     }
     that.$root.$on("finish-time", function() {
       that.subtitle = "¿ Quieres jugar de Nuevo ?";
+      document.getElementById("botonReset").style.display = "inline-flex";
+      document.getElementById("botonSolve").style.display = "none";
     });
     that.$root.$on("reset-game", function() {
       that.subtitle = subtitleInicio;
@@ -69,6 +74,9 @@ export default {
     $_reset(e) {
       if (e && e.target) e.target.style.display = "none";
       this.$root.$emit("reset-game");
+    },
+    $_solve(e) {
+      this.$root.$emit("solve-word");
     }
   }
 };
@@ -82,23 +90,35 @@ export default {
   margin-top: 60px;
   font-size: 22px;
 }
-#botonReset {
+
+.boton {
   position: relative;
   display: none;
-  background-color: orange;
   border: none;
   color: white;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   color: #fff;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   border-radius: 50px;
+}
+
+.reset {
+  background-color: #4caf50; /* Green */
+  border: 1px solid #4caf50;
   top: -10px;
 }
+
+.solve {
+  background-color: #cd5c5c;
+  border: 1px solid #cd5c5c;
+  bottom: 1px;
+}
+
 .titulos {
   text-align: center;
 }

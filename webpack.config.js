@@ -1,20 +1,30 @@
 var path = require('path')
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+// var { VueLoaderPlugin } = require('vue-loader');
 // var CleanWebpackPlugin = require('clean-webpack-plugin');
+// var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '',
-    filename: 'build.js'
+    // publicPath: '',
+    // filename: '[name].js'
+    filename: 'build.js',
   },
+  // optimization: {
+  //   minimizer: [
+  //     new UglifyJsPlugin()
+  //   ]
+  // },
   plugins: [
     // new CleanWebpackPlugin(['dist']),
     // new CopyWebpackPlugin([
     // { from: './src/assets', to: './src/assets' },
     // ]),
+    // new UglifyJSPlugin(),
+    // new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       title: 'Ordenados',
       template: 'index.html'
@@ -65,8 +75,9 @@ module.exports = {
   },
   performance: {
     hints: false
-  },
-  devtool: '#eval-source-map',
+  }
+  // ,
+  // devtool: '#eval-source-map',
 }
 
 if (process.env.NODE_ENV === 'production') {

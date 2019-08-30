@@ -36,10 +36,9 @@ export default {
 }
 
 function addCategorias(e){
-  console.log('addCategorias');
-    if( !e.detail || !e.detail.categoria){
-      return;
-    }
+  if(!e.detail || !e.detail.categoria || this.categorias.length > 0 ){
+    return;
+  }
     const listadoJson = e.detail.categoria;
     for (const i in listadoJson){
         this.categorias.push(i.toUpperCase());

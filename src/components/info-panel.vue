@@ -18,7 +18,7 @@
 .block {
   font-size: 12px;
   display: inline-block;
-  width: 45%;
+  width: 30%;
   margin: 0;
   padding: 0;
   left:10%;
