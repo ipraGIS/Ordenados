@@ -50,11 +50,25 @@ export default {
         let evt = document.createEvent("CustomEvent");
         evt.initCustomEvent("json-loaded", false, false, myjson);
         window.dispatchEvent(evt);
+      }).catch(function(error){
+        console.log('Hubo un problema con la petición Fetch:' + error.message);
       });
   },
   mounted() {
+    // const myjson = {
+    //   categoria: {
+    //     animales: ["Oso Panda", "Caracol", "Elefante", "Cocodrilo"],
+    //   },
+    //   segundos: "5"
+    // };
+
+    // let evt = document.createEvent("CustomEvent");
+    // evt.initCustomEvent("json-loaded", false, false, myjson);
+    // window.dispatchEvent(evt);
+    // this.subtitle = `Tiene ${evt.detail.segundos} segundos para adivinar de qué se trata...`;
+    // subtitleInicio = this.subtitle;
     const that = this;
-    addEventListener("json-loaded", jsonHandler, false);
+    addEventListener("json-loaded", jsonHandler, true);
     let subtitleInicio;
     function jsonHandler(evt) {
       if (!evt.detail || !evt.detail.segundos) return;

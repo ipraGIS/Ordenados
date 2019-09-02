@@ -12,9 +12,8 @@ export default {
       const that = this;
       addEventListener('json-loaded', jsonHandlerInfo, false);
       function jsonHandlerInfo(evt) {
-        addCategorias.apply(that, [evt]);
+        that.$_infoPanel_addCategorias.apply(that, [evt]);
       }
-      this.$root.$on('reset-game', this.$_infopanel_reset.bind(this));
   }, 
   watch:{
     checked: {
@@ -26,21 +25,16 @@ export default {
     },
     deep: false
     }
-
   },
   methods: {
-    $_infopanel_reset(){
-      console.log('reset desde InfoPanel');
+    $_infoPanel_addCategorias(e){
+      if(!e.detail || !e.detail.categoria || this.categorias.length > 0 ){
+        return;
+      }
+        const listadoJson = e.detail.categoria;
+        for (const i in listadoJson){
+            this.categorias.push(i.toUpperCase());
+        }
     }
   }
-}
-
-function addCategorias(e){
-  if(!e.detail || !e.detail.categoria || this.categorias.length > 0 ){
-    return;
-  }
-    const listadoJson = e.detail.categoria;
-    for (const i in listadoJson){
-        this.categorias.push(i.toUpperCase());
-    }
 }

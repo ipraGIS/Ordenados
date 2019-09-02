@@ -45,13 +45,11 @@ methods: {
     this.solucion = true;
   },
   reset(){
-    this.updateLetras();
     this.solucion = false;
     this.visible = false;
   },
 
   desordena(dataSelec) {
-    console.log(11111111111, dataSelec.length);
       let opciones = [];
       for (let i in dataSelec) {
         opciones.push(dataSelec[i]);

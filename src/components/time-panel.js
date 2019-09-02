@@ -1,5 +1,9 @@
 export default {
     name: 'time-panel',
+    props () {
+
+    },
+
     data () {
       return {
         title: 'panel para mostrar el tiempo',
@@ -15,9 +19,10 @@ export default {
       const that = this;
       addEventListener('json-loaded', jsonHandlerTime, false);
       function jsonHandlerTime(evt) {
-        if( evt.detail &&  evt.detail.segundos)
+        if(evt.detail &&  evt.detail.segundos){
           that.time = evt.detail.segundos ;
           that.timeInicial = evt.detail.segundos ;
+        }
       }
       this.$root.$on('reset-game', this.$_time_reset.bind(this));
       this.$root.$on('solve-word', this.$_time_finish.bind(this));
@@ -40,7 +45,6 @@ export default {
           }
           return (this.time);
         }.bind(this), 1000);
-        
         var that = this;
         const time2 = that.time*1000 + 500;
         setTimeout(function(time2){
@@ -53,10 +57,8 @@ export default {
         this.hasError = true;
         this.$root.$emit('finish-time', {});
          },
-         
       $_time_reset(){
         this.hasError = false;
-        console.log('reset desde TimePanel');
         this.time = this.timeInicial;
         this.cuenta = false;
       },
@@ -64,10 +66,3 @@ export default {
     }
   }
 
-// function setTime(e){
-//   if( !e.detail || !e.detail.segundos){
-//     return;
-//   }
-//   this.timeInicial = e.detail.segundos;
-//   this.time = e.detail.segundos;
-// }
