@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       title: "Ordenando",
-      subtitle: "Tiene X segundos para adivinar de qué se trata...",
+      subtitle: "Tiene  segundos para adivinar de qué se trata...",
       jsonData: {}
     };
   },

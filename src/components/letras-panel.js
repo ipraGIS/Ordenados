@@ -5,51 +5,47 @@ export default {
       texto: 'Ordena',
       visible: false,
       solucion: false,
-      urlLetras: '../src/assets/textos.json',
       letras: "ABC", 
       letrasOrdenadas:'',
       categoriaSel:'',
       data:{}
     }
   },
-
-    // removeEventListener('mostrar-letras', letrasHandler, false);
-
   mounted(){
-    this.$root.$on('categoria-modificada', this.updateLetras.bind(this));
-    this.$root.$on('finish-time', this.soluciona.bind(this));
-    this.$root.$on('solve-word', this.soluciona.bind(this));
-    this.$root.$on('reset-game', this.reset.bind(this));
+    this.$root.$on('categoria-modificada', this.$_letras_updateLetras.bind(this));
+    this.$root.$on('finish-time', this.$_letras_soluciona.bind(this));
+    this.$root.$on('solve-word', this.$_letras_soluciona.bind(this));
+    this.$root.$on('reset-game', this.$_letras_reset.bind(this));
     const that = this;
     addEventListener('json-loaded', jsonHandlerLetras, false);
     function jsonHandlerLetras(evt) {
       that.data = evt.detail;
       that.categoriaSel = Object.keys(evt.detail.categoria)[0];
     }
-    addEventListener('mostrar-letras', letrasHandler, false);
-    function letrasHandler(evt) {
-      that.letras = that.desordena(that.data.categoria[that.categoriaSel]).toString(); 
-      that.visible = true;
+    addEventListener('mostrar-letras', letrasHandler.bind(this), false);
+    function letrasHandler() {
+      this.letras = this.$_letras_desordena(this.data.categoria[this.categoriaSel]).toString(); 
+      this.visible = true;
     }
 },
 
 methods: {
-  updateLetras(categoria){
+  $_letras_updateLetras(categoria){
     const categoriaSelect = categoria? categoria[0] : this.categoriaSel ? this.categoriaSel : 'todas';
     if (categoriaSelect){
       this.categoriaSel = categoriaSelect.toLowerCase();
-      this.letras = this.desordena(this.data.categoria[this.categoriaSel]).toString();
+      // this.letras = this.$_letras_desordena(this.data.categoria[this.categoriaSel]).toString();
     }
   },
-  soluciona(){
+  $_letras_soluciona(){
     this.solucion = true;
   },
-  reset(){
+  $_letras_reset(){
     this.solucion = false;
     this.visible = false;
   },
 
-  desordena(dataSelec) {
+  $_letras_desordena(dataSelec) {
       let opciones = [];
       for (let i in dataSelec) {
         opciones.push(dataSelec[i]);
@@ -65,16 +61,16 @@ methods: {
       this.data.categoria[this.categoriaSel].splice( random, 1 );
       var c = cadena.replace(/\s/g, ',');
       this.letrasOrdenadas = c.toUpperCase();
-      console.log(this.desordenaPalabras(cadena));
-      return this.desordenaPalabras(cadena);
+      console.log(this.$_letras_desordenaPalabras(cadena));
+      return this.$_letras_desordenaPalabras(cadena);
     },
 
-    desordenaPalabras(frase) {
+    $_letras_desordenaPalabras(frase) {
       if(!frase)
         return;
       let palabras = frase.split(" ");
-      return palabras.map(function (palabra) {
-        let desordenada = [];
+      let desordenada = [];
+      palabras.map(function (palabra) {
         let salido = []
         while (desordenada.length < palabra.length) {
           let num = Math.floor(Math.random() * (palabra.length - 0) + 0); 
@@ -83,8 +79,8 @@ methods: {
             desordenada.push(palabra[num].toUpperCase());
           }
         }
-        return desordenada.join !== frase ?  desordenada.join("") : desordenaPalabras(frase); // me aseguro qué devuelva una palabra desordenada
       });
+      return desordenada.join("") !== frase.toUpperCase() ?  desordenada.join("") : this.$_letras_desordenaPalabras(frase); // me aseguro qué devuelva una palabra desordenada
     }
 }
 

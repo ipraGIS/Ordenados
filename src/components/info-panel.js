@@ -4,7 +4,8 @@ export default {
       return {
         info: 'Seleccione una categoría: ', 
         categorias:[],
-        checked:[]
+        checked:[],
+        selectedValue: 'animales',
       }
     },
     mounted(){
@@ -17,13 +18,19 @@ export default {
   }, 
   watch:{
     checked: {
-      handler: function() {
+      handler: function(e) {
         this.$root.$emit('categoria-modificada', this.checked);
         if(this.checked.length > 1){
           this.checked.shift();
         }
+
     },
     deep: false
+    },
+    categorias:{
+      handler:function(e){
+        this.checked = [this.categorias[0]] // por defecto la primera categoría es la chequeada.
+      }
     }
   },
   methods: {

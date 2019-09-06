@@ -1,9 +1,5 @@
 export default {
     name: 'time-panel',
-    props () {
-
-    },
-
     data () {
       return {
         title: 'panel para mostrar el tiempo',
@@ -46,10 +42,10 @@ export default {
           return (this.time);
         }.bind(this), 1000);
         var that = this;
-        const time2 = that.time*1000 + 500;
-        setTimeout(function(time2){
+        const time2 = that.time * 1000 + 500;
+        setTimeout(function(){
           clearInterval(crono);
-          that.title = "Se acabó tu tiempooooo";
+          that.title = "Se acabó tu tiempo!";
         }, time2);
 
       },

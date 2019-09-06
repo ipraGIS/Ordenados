@@ -5,7 +5,7 @@
       <input type="checkbox"  :ref="'checkbox' + index" :id="`checkbox-${index}`" :value="item" v-model.lazy="checked" checked><label>{{item}}</label>
     </div>-->
     <span class="block--list" v-for="(item) in categorias" :key="item.id">
-      <input class="block--list--input" type="checkbox" v-model="checked" :value="item" />
+      <input class="block--list--input" type="checkbox"   :checked="item == selectedValue ? true : false" v-model="checked" :value="item" />
       {{item}}
     </span>
   </div>

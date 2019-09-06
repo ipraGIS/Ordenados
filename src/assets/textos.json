@@ -1,10 +1,10 @@
 {
-  "categoria": {
-    "animales": ["Oso Panda", "Caracol", "Elefante", "Cocodrilo"],
-    "comida": ["Tortilla", "Croquetas", "Paella", "Macarrones con tomate", "Calamares a la romana", "Guisantes con Jamón", "Lasaña", "Salmorejo"],
-    "paises": ["Francia", "Colombia", "Australia"],
-    "peliculas": ["Cars", "Peter Pan", "Ratatouille", "Los Increibles", "Rompe Ralf", "El Rey León", "Kunfú Panda"]
-  },
-  "segundos": "5",
-  "todas": false
+	"categoria": {
+		"animales": ["Águila Real", "Ballena", "Buho", "Cangrejo", "Canguro", "Caracol", "Cebra", "Cerdo", "Cocodrilo", "Conejo", "Delfín", "Elefante", "Gato", "Gorila", "Hipopótamo", "Jabalí", "Jirafa", "Koala", "León", "Lobo", "Medusa", "Mono", "Oso Panda", "Oveja", "Perro", "Ratón", "Rinoceronte", "Tiburón Blanco", "Tigre", "Vaca"],
+		"comida": ["Arroz tres delicias", "Bacalao al pil-pil", "Calamares", "Chuletas de cordero", "Codido", "Croquetas", "Espinacas con bechamel", "Guisantes con Jamón", "Judias verdes", "Lasaña", "Lentejas", "Macarrones con tomate", "Merluza en salsa verde", "Paella", "Perrito caliente", "Pisto", "Potaje", "Rissotto", "Salmorejo", "Tortilla de patata"],
+		"paises": ["Argentina", "Australia", "Bolivia", "Bélgica", "Canada", "China", "Colombia", "Corea del sur", "Croacia", "Dinamarca", "Egipto", "Escocia", "España", "Finlandia", "Francia", "Grecia", "Italia", "Japón", "Jordania", "Kenia", "Marruecos", "Mongolia", "Nigeria", "Nueva Zelanda", "Paraguay", "Perú", "Portugal", "República Democrática el Congo", "Rusia", "Sudafrica", "Venezuela"],
+		"peliculas": ["101 Dalmatas", "Aladdin", "Blancanieves y los siete enanitos", "Buscando a Nemo", "Cars", "Como entrenar a tu Dragón", "El Rey León", "El libro de la Selva", "Enredados", "Frozen", "Hotel Transilvania", "Ice Age", "Kunfú Panda", "La Bella y La Bestia", "La Cenicienta", "La Sirenita", "Los Increibles", "Madagascar", "Mostruos", "Peter Pan", "Ratatouille", "Rompe Ralf", "Shrek", "Toy Story", "Walle"]
+	},
+	"segundos": "5",
+	"todas": false
 }
